@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">RunMyMap</string>
+
+    <string name="error_something_wrong">An error has occurred</string>
+
+    <string name="app_logo">logo</string>
+
+
+    <!--text login and register fragments-->
+    <string name="txt_edit_text_Email">E-mail</string>
+    <string name="txt_edit_text_Name">Name</string>
+    <string name="txt_edit_text_Last_Name">Last name</string>
+
+    <string name="txt_edit_text_Password">Password</string>
+    <string name="txt_edit_text_RepeatPassword">Repeat password</string>
+
+    <string name="error_no_empty_email_password">Can not find email and password</string>
+
+    <string name="error_invalid_data_login">Error: not valid email or password</string>
+    <string name="error_invalid_data_register">Error: not valid some fields</string>
+
+    <!--Buttons login, register-->
+    <string name="txt_button_login_underlined"><u>Login</u></string>
+    <string name="txt_button_login">Login</string>
+
+    <string name="txt_button_register_underlined"><u>Register</u></string>
+    <string name="txt_button_register">Register</string>
+
+    <!--All fragments interface-->
+    <string name="exceptionInterface">должен реализовывать интерфейс</string>
+
+    <string name="error_sqlite">SQLite exception</string>
+    <string name="error_no_internet">Sorry, problem with internet</string>
+    <string name="error_unknown">Unknown error</string>
+    <string name="error_empty_some_fields">Not all fields are filled in</string>
+
+    <!--SecondActivity toggle-->
+    <string name="open">open</string>
+    <string name="close">close</string>
+
+    <!--Menu items -->
+    <string name="home_page">Home screen</string>
+    <string name="list_notification_page">Notifications</string>
+    <string name="exit_app">Exit</string>
+
+    <!--VM login-->
+    <string name="error_empty_email_field">Please, input email</string>
+    <string name="error_empty_password_field">Please, input password</string>
+    <string name="error_not_valid_email_field">Not valid email</string>
+    <string name="no_error"> </string>
+
+    <string name="error_authorization">Authorization error</string>
+
+    <!--VM register-->
+    <string name="error_empty_name_field">Please, input name</string>
+    <string name="error_empty_last_name_field">Please, input last name</string>
+    <string name="error_empty_repeat_password_field">Please, input password</string>
+    <string name="error_empty_different_password">Passwords not match</string>
+
+    <!--Track fragment-->
+    <string name="txt_text_view_distance">Distance: %s(m)</string>
+    <string name="txt_text_view_time">Time: %s(min)</string>
+    <string name="error_no_info">Error: no info about track</string>
+    <string name="error_no_coordinates">Error: coordinates not found</string>
+
+    <string name="txt_marker_start">Start</string>
+    <string name="txt_marker_finish">Finish</string>
+
+
+    <!--ListTrack fragment-->
+    <string name="date_start">Date start: %s</string>
+    <string name="running_time">Running time: %s</string>
+    <string name="distance">Distance: %s(m)</string>
+    <string name="new_track">new track</string>
+
+    <string name="error_no_track_list">There are no tracks yet</string>
+    <string name="btn_finish">Finish</string>
+
+    <!--Reminder fragment-->
+    <string name="btn_start">start</string>
+    <string name="new_reminder">new reminder</string>
+
+    <string name="time_for_run">Time for run: %s</string>
+    <string name="notification_text">Notification: %s</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
+    <string name="error_no_notification_list">There are no notification yet</string>
+
+
+    <!--Jogging activity-->
+    <string name="error_timer_running">Sorry, need to press button Finish</string>
+
+    <!--Jogging fragment-->
+    <string name="txt_text_view_distance_metre">%s(m)</string>
+
+
+    <!--Notification-->
+    <string name="specify_the_time">Specify the time</string>
+    <string name="specify_the_date">Specify the date</string>
+
+    <string name="btn_add_notification">Add notification</string>
+    <string name="btn_change_notification">Change notification</string>
+
+    <string name="notification_title">Reminder</string>
+    <string name="notification_subtitle">It is necessary to do running</string>
+
+    <string name="notification_schedule_title">Reminder added:\u00a0</string>
+    <string name="notification_schedule_pattern">dd.MM.yy \u00B7 HH:mm</string>
+
+    <string name="notification_schedule_error">Error: incorrect information</string>
+
+    <string name="text_notification">Text notification</string>
+
+    <string name="error_empty_notification_field">Please, input text notification</string>
+
+    <!--CustomDialogFragment-->
+    <string name="btn_OK">OK</string>
+    <string name="btn_CANCEL">Cancel</string>
+    <string name="txt_exit">Exit</string>
+    <string name="txt_exit_confirmation">Do you really want to get out?</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
