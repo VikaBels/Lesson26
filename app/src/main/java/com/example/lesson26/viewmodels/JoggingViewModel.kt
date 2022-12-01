@@ -3,11 +3,11 @@ package com.example.lesson26.viewmodels
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import bolts.Task
+import com.example.lesson26.R
 import com.example.lesson26.fragments.JoggingFragment.Companion.POINT_LIST_QUANTITY
 import com.example.lesson26.models.Point
 import com.example.lesson26.models.UIError
@@ -63,6 +63,7 @@ class JoggingViewModel(
         }
 
         if (!isGranted) {
+            uiError.value = UIError(R.string.error_no_gps)
             return
         }
 
@@ -123,7 +124,6 @@ class JoggingViewModel(
             ) * (latStart - latEnd) * cos(PI * lngStart)
         )
     }
-
 
     fun addNewTrack(
         token: String?,

@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.lesson26.repositories.DataRepository
 import com.example.lesson26.viewmodels.AddNotificationViewModel
 
-class AddNotificationViewModelFactory (
+class AddNotificationViewModelFactory(
     private val dataRepository: DataRepository,
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

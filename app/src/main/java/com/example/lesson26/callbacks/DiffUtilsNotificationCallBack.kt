@@ -6,7 +6,7 @@ import com.example.lesson26.models.Notification
 class DiffUtilsNotificationCallBack(
     private val oldList: List<Notification>,
     private val newList: List<Notification>
-) : DiffUtil.Callback(){
+) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return oldList.size
     }

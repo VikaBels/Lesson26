@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.example.lesson26.App
+import com.example.lesson26.App.Companion.getDataRepository
 import com.example.lesson26.R
 import com.example.lesson26.databinding.FragmentLoginBinding
 import com.example.lesson26.factories.LoginViewModelFactory
@@ -27,7 +27,7 @@ class LoginFragment : Fragment() {
 
     private val loginViewModel by viewModels<LoginViewModel> {
         LoginViewModelFactory(
-            App.getDataRepository()
+            getDataRepository()
         )
     }
 

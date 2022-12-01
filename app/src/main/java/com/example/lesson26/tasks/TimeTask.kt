@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.lesson26.App.Companion.getInstanceApp
 import com.example.lesson26.TIME_FORMAT_JOGGING
+import com.example.lesson26.models.TwoTypesTime
 import com.example.lesson26.service.TimerService.Companion.BROADCAST_ACTION_UPDATE_TIMER
 import com.example.lesson26.service.TimerService.Companion.EXTRA_RESULT_TIME
 import com.example.lesson26.utils.getFormattedTime
@@ -16,7 +17,7 @@ class TimeTask(
     override fun run() {
         time += 0.06
 
-        val timeHelper = TimeHelper(
+        val timeHelper = TwoTypesTime(
             getFormattedTime(time, TIME_FORMAT_JOGGING),
             time
         )

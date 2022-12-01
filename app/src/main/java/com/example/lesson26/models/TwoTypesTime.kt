@@ -1,11 +1,10 @@
-package com.example.lesson26.tasks
+package com.example.lesson26.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-//rename!!!!!
 @Parcelize
-class TimeHelper(
+class TwoTypesTime(
     val timeString: String,
     val time: Double
-):Parcelable
+) : Parcelable

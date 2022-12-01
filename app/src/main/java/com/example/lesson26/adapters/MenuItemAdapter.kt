@@ -10,14 +10,14 @@ import com.example.lesson26.interfaes.MenuNavigationListener
 import com.example.lesson26.models.ItemMenu
 
 class MenuItemAdapter(
-    private val listenerForFragment: MenuNavigationListener,
+    private val menuNavigationListener: MenuNavigationListener,
 ) : RecyclerView.Adapter<MenuItemAdapter.MenuItemViewHolder>() {
     private var menuItemList = listOf<ItemMenu>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuItemViewHolder {
         val binding =
             NameItemMenuBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MenuItemViewHolder(binding, listenerForFragment)
+        return MenuItemViewHolder(binding, menuNavigationListener)
     }
 
     override fun onBindViewHolder(holder: MenuItemViewHolder, position: Int) {
@@ -40,7 +40,7 @@ class MenuItemAdapter(
 
     class MenuItemViewHolder(
         private val binding: NameItemMenuBinding,
-        private val listenerForFragment: MenuNavigationListener,
+        private val menuNavigationListener: MenuNavigationListener,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private val resources = binding.root.context.resources
@@ -51,7 +51,7 @@ class MenuItemAdapter(
             binding.image.setImageResource(menuItem.drawableId)
 
             binding.nameItemMenu.setOnClickListener {
-                listenerForFragment.openFragment(menuItem.name)
+                menuNavigationListener.openFragment(menuItem.name)
             }
         }
     }

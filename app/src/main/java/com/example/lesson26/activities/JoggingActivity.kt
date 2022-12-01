@@ -16,6 +16,7 @@ class JoggingActivity : AppCompatActivity(),
     JoggingFragmentListener {
     companion object {
         const val TAG_FOR_JOGGING_FRAGMENT = "TAG_FOR_JOGGING_FRAGMENT"
+        const val TAG_FOR_SEND_TOKEN_NOTIFICATION = "TAG_FOR_SEND_TOKEN_NOTIFICATION"
     }
 
     private var bindingJoggingActivity: ActivityJoggingBinding? = null
@@ -24,14 +25,12 @@ class JoggingActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val bindingJogging = ActivityJoggingBinding.inflate(layoutInflater)
-        setContentView(bindingJogging.root)
+        val bindingJoggingActivity = ActivityJoggingBinding.inflate(layoutInflater)
+        setContentView(bindingJoggingActivity.root)
 
-        this.bindingJoggingActivity = bindingJogging
+        this.bindingJoggingActivity = bindingJoggingActivity
 
-        if (savedInstanceState == null) {
-            showJoggingFragment()
-        }
+        showJoggingFragment()
     }
 
     override fun onDestroy() {
@@ -52,7 +51,9 @@ class JoggingActivity : AppCompatActivity(),
     }
 
     private fun showJoggingFragment() {
-        val fragment = JoggingFragment.newInstance(getToken())
+        val currentToken = getToken(TAG_FOR_SEND_TOKEN) ?: getToken(TAG_FOR_SEND_TOKEN_NOTIFICATION)
+
+        val fragment = JoggingFragment.newInstance(currentToken)
 
         val fragmentManager: FragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
@@ -62,8 +63,8 @@ class JoggingActivity : AppCompatActivity(),
             .commit()
     }
 
-    private fun getToken(): String? {
-        return intent.getStringExtra(TAG_FOR_SEND_TOKEN)
+    private fun getToken(key: String): String? {
+        return intent.extras?.getString(key)
     }
 
     private fun showToastError(textError: String?, context: Context) {

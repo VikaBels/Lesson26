@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class Notification(
     val text: String,
-    val time: Long,
+    val time: Long
 ):Parcelable

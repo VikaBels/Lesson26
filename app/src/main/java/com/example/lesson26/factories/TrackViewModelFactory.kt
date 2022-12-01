@@ -12,7 +12,7 @@ class TrackViewModelFactory(
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass == TrackViewModel::class.java) {
-            return TrackViewModel(trackInfo,dataRepository) as T
+            return TrackViewModel(trackInfo, dataRepository) as T
         }
         return super.create(modelClass)
     }

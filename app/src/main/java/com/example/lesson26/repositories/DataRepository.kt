@@ -39,7 +39,7 @@ class DataRepository(
                     "FROM track t " +
                     "JOIN user u ON u.token = t.user_token " +
                     "WHERE u.token = ? " +
-                    "ORDER BY t.time DESC",
+                    "ORDER BY t.begins_at DESC",
             arrayOf(
                 refactorToken(tokenUser)
             )
@@ -282,7 +282,6 @@ class DataRepository(
         }.executeUpdateDelete()
     }
 
-    //change newText and newTime in SQL
     private fun changeNotification(
         time: Long,
         text: String,
@@ -319,7 +318,6 @@ class DataRepository(
         }, cancellationToken)
     }
 
-    //this change
     private fun refactorToken(tokenUser: String): String {
         return tokenUser.split(COLON.toRegex()).toTypedArray()[0]
     }

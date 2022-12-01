@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.example.lesson26.App
 import com.example.lesson26.App.Companion.getDataRepository
 import com.example.lesson26.App.Companion.getInstanceApp
 import com.example.lesson26.R
@@ -25,7 +23,7 @@ import com.example.lesson26.interfaes.JoggingFragmentListener
 import com.example.lesson26.service.TimerService
 import com.example.lesson26.service.TimerService.Companion.BROADCAST_ACTION_UPDATE_TIMER
 import com.example.lesson26.service.TimerService.Companion.EXTRA_RESULT_TIME
-import com.example.lesson26.tasks.TimeHelper
+import com.example.lesson26.models.TwoTypesTime
 import com.example.lesson26.utils.getFormattedDistance
 import com.example.lesson26.utils.isOnline
 import com.example.lesson26.utils.refactorDateTime
@@ -51,14 +49,14 @@ class JoggingFragment : Fragment() {
 
     private var serviceIntent: Intent? = null
 
-    private var timeStart: Long = 0
-    private var time = 0.0
+    private var timeStart = 0L
     private var distance = 0L
+    private var time = 0.0
 
     private val timerServiceReceiver: BroadcastReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
-            val timerService = intent.getParcelableExtra<TimeHelper>(EXTRA_RESULT_TIME)
-            onNewServiceReceiver(timerService)
+            val timerService = intent.getParcelableExtra<TwoTypesTime>(EXTRA_RESULT_TIME)
+            timeServiceReceiver(timerService)
         }
     }
 
@@ -91,9 +89,9 @@ class JoggingFragment : Fragment() {
 
         serviceIntent = Intent(context, TimerService::class.java)
 
-        setUpListeners()
-
         observeError()
+
+        setUpListeners()
     }
 
     override fun onResume() {
@@ -131,7 +129,6 @@ class JoggingFragment : Fragment() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(getInstanceApp())
     }
 
-    //mb don't Toast ???
     private fun showTextError(idError: Int) {
         Toast.makeText(
             requireContext(),
@@ -140,7 +137,7 @@ class JoggingFragment : Fragment() {
         ).show()
     }
 
-    private fun onNewServiceReceiver(currentTime: TimeHelper?) {
+    private fun timeServiceReceiver(currentTime: TwoTypesTime?) {
         if (currentTime != null && currentTime.time != 0.0) {
             time = currentTime.time
             setTimeField(currentTime.timeString)
@@ -165,9 +162,9 @@ class JoggingFragment : Fragment() {
 
     private fun onClickStart() {
         fusedLocationClient?.let { client ->
-            startTimer()
+            joggingViewModel.getCurrentLocation(client, requireContext()) {
+                startTimer()
 
-            joggingViewModel.getCurrentLocation(client, requireContext()){
                 timeStart = refactorDateTime(System.currentTimeMillis())
 
                 showJoggingFields()
@@ -183,9 +180,9 @@ class JoggingFragment : Fragment() {
         }
 
         fusedLocationClient?.let { client ->
-            stopTimer()
+            joggingViewModel.getCurrentLocation(client, requireContext()) {
+                stopTimer()
 
-            joggingViewModel.getCurrentLocation(client, requireContext()){
                 saveInfoJogging()
 
                 showStatisticJoggingFields()
@@ -233,16 +230,6 @@ class JoggingFragment : Fragment() {
 
         val pointStart = points.first()
         val pointEnd = points.last()
-
-
-        ///delete
-        val help = "${pointStart.lat} " +
-                "${pointStart.lng} " +
-                "${pointEnd.lat} " +
-                "${pointEnd.lng} "
-
-        Toast.makeText(requireContext(), help, Toast.LENGTH_LONG).show()
-        ///
 
         joggingViewModel.addNewTrack(
             getToken(),

@@ -5,3 +5,5 @@ const val DATE_FORMAT = "dd.MM.yyyy HH:mm:ss"
 
 const val TIME_FORMAT_JOGGING = "%02d:%02d:%02d"
 const val TIME_FORMAT_SHOW = "%02d m %02d s %02d ms"
+
+const val THOUSAND = 1000

@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
-import com.example.lesson26.App
 import com.example.lesson26.R
 import com.example.lesson26.activities.AuthorizationActivity
 import com.example.lesson26.databinding.FragmentRegisterBinding
@@ -82,10 +81,7 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    //OBSERVE!!!!!!!!!! - delete some
-    //this strange !!!
     private fun observeFields() {
-
         registerViewModel.errorEmailField.observe(viewLifecycleOwner) { errorId ->
             bindingRegisterFragment?.inputLayoutEmail?.error = getString(errorId)
         }
@@ -110,7 +106,10 @@ class RegisterFragment : Fragment() {
     private fun setUpListener() {
         bindingRegisterFragment?.apply {
             txtViewLogin.setOnClickListener {
-                registerFragmentListener?.showLoginFragment(AuthorizationActivity.TAG_FOR_LOGIN, false)
+                registerFragmentListener?.showLoginFragment(
+                    AuthorizationActivity.TAG_FOR_LOGIN,
+                    false
+                )
             }
 
             buttonRegister.setOnClickListener {

@@ -5,7 +5,6 @@
 
     <string name="app_logo">logo</string>
 
-
     <!--text login and register fragments-->
     <string name="txt_edit_text_Email">E-mail</string>
     <string name="txt_edit_text_Name">Name</string>
@@ -59,13 +58,12 @@
 
     <!--Track fragment-->
     <string name="txt_text_view_distance">Distance: %s(m)</string>
-    <string name="txt_text_view_time">Time: %s(min)</string>
+    <string name="txt_text_view_time">Time: %s</string>
     <string name="error_no_info">Error: no info about track</string>
     <string name="error_no_coordinates">Error: coordinates not found</string>
 
     <string name="txt_marker_start">Start</string>
     <string name="txt_marker_finish">Finish</string>
-
 
     <!--ListTrack fragment-->
     <string name="date_start">Date start: %s</string>
@@ -86,13 +84,13 @@
 
     <string name="error_no_notification_list">There are no notification yet</string>
 
-
     <!--Jogging activity-->
     <string name="error_timer_running">Sorry, need to press button Finish</string>
+    <string name="error_no_gps">Sorry, need allow geo-location</string>
+
 
     <!--Jogging fragment-->
     <string name="txt_text_view_distance_metre">%s(m)</string>
-
 
     <!--Notification-->
     <string name="specify_the_time">Specify the time</string>
@@ -118,9 +116,5 @@
     <string name="btn_CANCEL">Cancel</string>
     <string name="txt_exit">Exit</string>
     <string name="txt_exit_confirmation">Do you really want to get out?</string>
-
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

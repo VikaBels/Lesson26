@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import bolts.Task
 import com.example.lesson26.R
 import com.example.lesson26.models.UIError
-import com.example.lesson26.repositories.DataRepository
 import com.example.lesson26.repositories.RegisterRepository
 import com.example.lesson26.utils.getIdError
 import com.example.lesson26.utils.isOnline
@@ -21,7 +20,6 @@ class RegisterViewModel : BaseViewModel() {
     val currentToken: LiveData<String>
         get() = token
 
-    //change
     private val errorEmail = MutableLiveData<Int>()
     private val errorName = MutableLiveData<Int>()
     private val errorLastName = MutableLiveData<Int>()
@@ -51,7 +49,6 @@ class RegisterViewModel : BaseViewModel() {
         password: String?,
         repeatPassword: String?
     ) {
-        //change, not cool - NOT COOL !!!!!!!!
         val currentEmail = getValidEmail(email)
         val currentName = getValidName(name)
         val currentLastName = getValidLastName(lastName)
@@ -196,8 +193,6 @@ class RegisterViewModel : BaseViewModel() {
         return PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()
     }
 
-    //change
-    //can be when password and repeatPassword = null -> this bad
     private fun identityVerificationPasswords(repeatPassword: String?, password: String?): Boolean {
         return password == repeatPassword
     }

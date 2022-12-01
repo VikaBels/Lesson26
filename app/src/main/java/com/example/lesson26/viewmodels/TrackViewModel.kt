@@ -38,8 +38,7 @@ class TrackViewModel(
                 startDataBaseRequest(trackInfo)
             }
 
-        }else{
-            //Change
+        } else {
             uiError.value = UIError(R.string.error_something_wrong)
         }
     }
@@ -74,14 +73,11 @@ class TrackViewModel(
             }
 
         }, Task.UI_THREAD_EXECUTOR, getToken())
-
-
     }
 
     private fun checkServerResponsePoints(listPoints: List<Point>?) {
         when (listPoints) {
             null -> {
-                //change
                 uiError.value = UIError(R.string.error_invalid_data_login)
             }
             else -> {

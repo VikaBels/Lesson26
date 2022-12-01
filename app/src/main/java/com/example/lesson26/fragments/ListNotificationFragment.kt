@@ -10,7 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lesson26.App
+import com.example.lesson26.App.Companion.getDataRepository
 import com.example.lesson26.R
 import com.example.lesson26.adapters.NotificationAdapter
 import com.example.lesson26.databinding.FragmentListNotificationBinding
@@ -32,22 +32,24 @@ class ListNotificationFragment : Fragment(),
         }
     }
 
-    private var listNotificationScreenNavigationListener: ListNotificationScreenNavigationListener? = null
+    private var listNotificationScreenNavigationListener: ListNotificationScreenNavigationListener? =
+        null
 
     private var bindingListNotificationFragment: FragmentListNotificationBinding? = null
     private var notificationAdapter: NotificationAdapter? = null
 
     private val listNotificationViewModel by viewModels<ListNotificationViewModel> {
         ListNotificationViewModelFactory(
-            App.getDataRepository(),
+            getDataRepository(),
             getToken()
         )
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        listNotificationScreenNavigationListener = context as? ListNotificationScreenNavigationListener
-            ?: error("$context${resources.getString(R.string.exceptionInterface)}")
+        listNotificationScreenNavigationListener =
+            context as? ListNotificationScreenNavigationListener
+                ?: error("$context${resources.getString(R.string.exceptionInterface)}")
     }
 
     override fun onCreateView(
@@ -89,7 +91,6 @@ class ListNotificationFragment : Fragment(),
     }
 
     override fun onBtnDeleteClick(notification: Notification) {
-        //getToken() - not cool !!!!
         listNotificationViewModel.deleteNotification(
             notification.time,
             notification.text,
@@ -119,7 +120,7 @@ class ListNotificationFragment : Fragment(),
         }
     }
 
-    private fun getToken(): String?{
+    private fun getToken(): String? {
         return arguments?.getString(KEY_SEND_TOKEN)
     }
 

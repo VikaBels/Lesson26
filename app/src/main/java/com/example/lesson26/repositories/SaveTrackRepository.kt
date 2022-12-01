@@ -18,7 +18,6 @@ class SaveTrackRepository {
         const val SAVE_URL = "senla-training-addition/lesson-26.php?method=save"
     }
 
-    //rename
     fun getTrackSave(
         token: String,
         id: Int? = null,

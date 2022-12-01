@@ -18,10 +18,10 @@ class GreetingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val bindingSplashActivity = ActivityGreetingBinding.inflate(layoutInflater)
-        setContentView(bindingSplashActivity.root)
+        val bindingActivityGreeting = ActivityGreetingBinding.inflate(layoutInflater)
+        setContentView(bindingActivityGreeting.root)
 
-        startAnimationRotation(bindingSplashActivity.logo)
+        startAnimationRotation(bindingActivityGreeting.logo)
 
         setScreenDisplayTime()
     }

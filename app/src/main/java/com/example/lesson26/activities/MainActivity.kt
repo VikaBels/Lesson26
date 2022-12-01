@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.os.bundleOf
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.lesson26.models.NotificationForEdit
 import com.example.lesson26.R
 import com.example.lesson26.activities.AuthorizationActivity.Companion.KEY_FOR_SEND_TOKEN
 import com.example.lesson26.adapters.MenuItemAdapter
@@ -27,8 +29,7 @@ class MainActivity : AppCompatActivity(),
     TracksScreenNavigationListener,
     ListNotificationScreenNavigationListener,
     ExitConfirmationDialogListener,
-    AddNotificationFragmentListener,
-    EditNotificationFragmentListener {
+    AddEditNotificationFragmentListener {
     companion object {
         const val TAG_FOR_LIST_TRACK = "TAG_FOR_LIST_TRACK"
         const val TAG_FOR_TRACK = "TAG_FOR_TRACK"
@@ -123,8 +124,14 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun showJoggingActivity() {
-        val intent = Intent(this, JoggingActivity::class.java)
-        intent.putExtra(TAG_FOR_SEND_TOKEN, token)
+        val intent = Intent(this, JoggingActivity::class.java).apply {
+            putExtras(
+                bundleOf(
+                    TAG_FOR_SEND_TOKEN to token
+                )
+            )
+        }
+
         startActivity(intent)
     }
 
@@ -134,7 +141,11 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun showEditNotificationFragment(notification: Notification) {
-        val fragment = EditNotificationFragment.newInstance(notification)
+        val currentNotification = NotificationForEdit(
+            notification,
+            token
+        )
+        val fragment = EditNotificationFragment.newInstance(currentNotification)
         showFragment(TAG_FOR_EDIT_NOTIFICATION, fragment, TAG_FOR_LIST_TRACK)
     }
 

@@ -33,9 +33,7 @@ class AuthorizationActivity : AppCompatActivity(),
 
         this.bindingAuthorization = bindingAuthorization
 
-        if (savedInstanceState == null) {
-            showLoginFragment(null)
-        }
+        showLoginFragment(null)
     }
 
     override fun onDestroy() {

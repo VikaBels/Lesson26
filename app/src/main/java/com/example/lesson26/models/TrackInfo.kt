@@ -7,4 +7,4 @@ import kotlinx.parcelize.Parcelize
 class TrackInfo(
     val track: Track,
     val token: String
-):Parcelable
+) : Parcelable

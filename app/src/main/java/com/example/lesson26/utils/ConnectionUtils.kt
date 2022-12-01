@@ -3,11 +3,11 @@ package com.example.lesson26.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import com.example.lesson26.App
+import com.example.lesson26.App.Companion.getInstanceApp
 
 fun isOnline(): Boolean {
     val connectivityManager =
-        App.getInstanceApp()
+        getInstanceApp()
             .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     val connection =

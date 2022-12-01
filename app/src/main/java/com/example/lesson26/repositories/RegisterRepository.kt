@@ -17,7 +17,6 @@ class RegisterRepository {
         const val REGISTER_URL = "senla-training-addition/lesson-26.php?method=register"
     }
 
-    //rename
     fun getRegisterResponse(
         email: String,
         firstName: String,
@@ -64,7 +63,7 @@ class RegisterRepository {
                     response: Response<RegisterResponseBody>
                 ) {
                     val body = response.body()
-                    
+
                     completable.setResult(body)
                 }
 

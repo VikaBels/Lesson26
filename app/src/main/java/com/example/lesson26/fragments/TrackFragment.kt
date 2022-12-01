@@ -1,7 +1,6 @@
 package com.example.lesson26.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -106,12 +105,11 @@ class TrackFragment : Fragment() {
             if (listPoint.isEmpty()) {
                 setTextError(R.string.error_no_coordinates)
             } else {
-
                 setMapWithPoints(
-                    listPoint[0].lat,
-                    listPoint[0].lng,
-                    listPoint[1].lat,
-                    listPoint[1].lng,
+                    listPoint.first().lat,
+                    listPoint.first().lng,
+                    listPoint.last().lat,
+                    listPoint.last().lng
                 )
             }
         }
@@ -129,7 +127,6 @@ class TrackFragment : Fragment() {
         }
     }
 
-    //rename
     private fun setMapWithPoints(
         startLat: Double,
         startLng: Double,
@@ -137,9 +134,6 @@ class TrackFragment : Fragment() {
         endLng: Double,
     ) {
         myMap.getMapAsync { mMap ->
-            //map koordinati
-            //https://www.mapsdirections.info/ru/GPS-%D0%BA%D0%BE%D0%BE%D1%80%D0%B4%D0%B8%D0%BD%D0%B0%D1%82%D1%8B-Google-%D0%9A%D0%B0%D1%80%D1%82%D0%B0%D1%85.html
-
             val markerStart = LatLng(startLat, startLng)
             mMap.addMarker(
                 MarkerOptions()
@@ -162,7 +156,7 @@ class TrackFragment : Fragment() {
                     )
             )
 
-            val centerPath = getCenterOfPath(
+            val centerPath = centerOfPath(
                 startLat, startLng,
                 endLat, endLng
             )
@@ -172,18 +166,16 @@ class TrackFragment : Fragment() {
         }
     }
 
-    //rename
-    //mb don't need -> different ways ??
-    private fun getCenterOfPath(
+    private fun centerOfPath(
         startLat: Double,
         startLng: Double,
         endLat: Double,
         endLng: Double,
     ): LatLng {
-        val latHelper = (startLat + endLat) / 2
-        val lngHelper = (startLng + endLng) / 2
+        val averageLat = (startLat + endLat) / 2
+        val averageLng = (startLng + endLng) / 2
 
-        return LatLng(latHelper, lngHelper)
+        return LatLng(averageLat, averageLng)
     }
 
     private fun checkTrackItem(track: Track?) {
@@ -198,6 +190,7 @@ class TrackFragment : Fragment() {
         bindingTrackFragment?.apply {
             textError.text = resources.getString(idError)
             textError.isVisible = true
+            progressBar.isVisible = false
         }
     }
 

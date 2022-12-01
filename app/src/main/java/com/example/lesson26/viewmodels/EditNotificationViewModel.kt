@@ -33,11 +33,13 @@ class EditNotificationViewModel(
         newText: String?,
         customTime: Long,
         currentTime: Long,
+        token: String?
     ) {
         val notification = getValidNotificationText(newText)
 
         if (customTime > currentTime &&
-            notification != null
+            notification != null &&
+            token != null
         ) {
             _isCorrectData.value = true
 
@@ -46,16 +48,17 @@ class EditNotificationViewModel(
             scheduleNotification(
                 customTime,
                 currentTime,
-                notification
+                notification,
+                token
             )
 
-           changeNotificationDataBase(
-               time,
-               text,
-               newTime,
-               notification
-           )
-        }else{
+            changeNotificationDataBase(
+                time,
+                text,
+                newTime,
+                notification
+            )
+        } else {
             _isCorrectData.value = false
             uiError.value = UIError(R.string.notification_schedule_error)
         }
@@ -66,7 +69,7 @@ class EditNotificationViewModel(
         text: String,
         newTime: Long,
         notification: String
-    ){
+    ) {
         dataRepository.changeNotificationTask(
             getToken(),
             time,

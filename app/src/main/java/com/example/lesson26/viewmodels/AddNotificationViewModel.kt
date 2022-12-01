@@ -43,7 +43,8 @@ class AddNotificationViewModel(
             scheduleNotification(
                 customTime,
                 currentTime,
-                notification
+                notification,
+                userToken
             )
 
             addNewReminderDataBase(

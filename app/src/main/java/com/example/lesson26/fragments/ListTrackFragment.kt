@@ -10,7 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lesson26.App
+import com.example.lesson26.App.Companion.getDataRepository
 import com.example.lesson26.R
 import com.example.lesson26.adapters.TrackAdapter
 import com.example.lesson26.databinding.FragmentListTrackBinding
@@ -39,7 +39,7 @@ class ListTrackFragment : Fragment(),
     private val trackListViewModel by viewModels<TrackListViewModel> {
         TrackListViewModelFactory(
             getToken(),
-            App.getDataRepository()
+            getDataRepository()
         )
     }
 
@@ -93,7 +93,6 @@ class ListTrackFragment : Fragment(),
         bindingListTrackFragment?.progressBar?.isVisible = isVisible
     }
 
-    //call in two places - change !!!
     private fun getToken(): String? {
         return arguments?.getString(KEY_SEND_POST)
     }

@@ -33,23 +33,22 @@ class TrackListViewModel(
 
             if (isOnline()) {
                 startServerRequest(token)
-            }else{
+            } else {
                 startDataBaseRequest(token)
             }
 
         } else {
-            //Change
             uiError.value = UIError(R.string.error_something_wrong)
         }
     }
 
-    private fun startDataBaseRequest(token:String){
+    private fun startDataBaseRequest(token: String) {
         dataRepository.getAllTrackTask(
             getToken(),
             token
         ).continueWith({
 
-            if(it.result != null){
+            if (it.result != null) {
                 this.trackList.value = it.result
             }
             if (it.error != null) {
@@ -60,7 +59,7 @@ class TrackListViewModel(
 
     }
 
-    private fun startServerRequest(token: String){
+    private fun startServerRequest(token: String) {
         val loginRepository = ListTrackRepository().getTracks(token)
 
         loginRepository?.continueWith({
@@ -78,7 +77,6 @@ class TrackListViewModel(
     private fun checkServerResponseListTrack(listTrack: List<Track>?) {
         when (listTrack) {
             null -> {
-                //Change
                 uiError.value = UIError(R.string.error_something_wrong)
             }
             else -> {

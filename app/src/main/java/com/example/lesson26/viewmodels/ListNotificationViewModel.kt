@@ -31,7 +31,6 @@ class ListNotificationViewModel(
         if (token != null) {
             startDataBaseRequest(token)
         } else {
-            //Change
             uiError.value = UIError(R.string.error_something_wrong)
         }
     }
@@ -77,7 +76,6 @@ class ListNotificationViewModel(
             }, Task.UI_THREAD_EXECUTOR)
 
         } else {
-            //change text error
             uiError.value = UIError(R.string.error_something_wrong)
         }
     }
@@ -85,7 +83,6 @@ class ListNotificationViewModel(
     private fun checkResponseListNotification(listNotification: List<Notification>?) {
         when (listNotification) {
             null -> {
-                //Change
                 uiError.value = UIError(R.string.error_something_wrong)
             }
             else -> {

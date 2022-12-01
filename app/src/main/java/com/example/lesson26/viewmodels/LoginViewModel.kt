@@ -32,7 +32,6 @@ class LoginViewModel(
     val errorPasswordField: LiveData<Int>
         get() = errorPassword
 
-    //rename
     fun startServerLoginRepository(
         email: String?,
         password: String?
@@ -44,7 +43,7 @@ class LoginViewModel(
 
             if (isOnline()) {
                 startServiceRequest(currentEmail, currentPassword)
-            }else{
+            } else {
                 uiError.value = UIError(R.string.error_no_internet)
             }
 
